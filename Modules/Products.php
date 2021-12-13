@@ -26,3 +26,10 @@ function getAllproducts():array
     $sth->execute();
     return $sth->fetchAll(PDO::FETCH_CLASS, 'Product');
 }
+
+function deleteProduct(int $id) : void {
+    global $pdo;
+    $sth = $pdo->prepare('DELETE FROM products WHERE id = ?');
+    $sth->bindParam(1, $id);
+    $sth->execute();
+}
