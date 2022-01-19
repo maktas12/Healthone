@@ -2,7 +2,7 @@
 .background{
     background-image: url("../img/gym.png");
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
     min-height: 100vh;
     max-height: 150vh;
@@ -92,6 +92,7 @@ h3{
 .navbar {
     margin-bottom: 0;
    background-color: red;
+   color: black;
 }
 
 .product-img {
@@ -107,6 +108,10 @@ h3{
 *{
     margin: 0;
     padding: 0;
+}
+.card{
+    background-color:tomato ;
+    margin-top: 50px;
 }
 .rate {
     float: left;
@@ -142,4 +147,15 @@ h3{
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+
+.size{
+    font-size: 30px;
+    margin-top: 300px;
+    color: darkred;
+}
+
+.navColor .nav-link{
+    color:black;
+    font-size: 25px;
 }

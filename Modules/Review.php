@@ -8,13 +8,13 @@ function saveReview($name, $content, $rating, $product_id) {
     $sth->bindParam("rating", $rating);
     $sth->bindParam("product_id", $product_id);
     $sth->execute();
-
 }
 
-function getReview()
+function getReview(int $product_id)
     {
         global $pdo;
-        $query = $pdo->prepare(query: "SELECT * FROM review");
+        $query = $pdo->prepare(query: "SELECT * FROM review WHERE product_id = :product_id");
+        $query->bindParam("product_id", $product_id);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS,'Review');
         return $result;

@@ -1,3 +1,4 @@
+<div class="navColor">
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="/home">
@@ -17,7 +18,22 @@
                     <a class="nav-link" href="/categories">sportapparaat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/signup">signup</a>
+                    <?php
+                        if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
+                        echo"
+                        <li class='nav-item'>
+                            <a class='nav-link' href='/admin/products'>admin</a>
+                        </li>
+                        ";
+                        }
+                         else{
+                            echo"
+                            <li class='nav-item'>
+                             <a class='nav-link' href='/signup'>signup</a>
+                            </li>
+                            ";
+                        }
+                    ?>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">contact</a>
@@ -44,3 +60,4 @@
         </div>
     </div>
 </nav>
+<div>

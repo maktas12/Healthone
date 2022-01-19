@@ -29,7 +29,48 @@ function getAllproducts():array
 
 function deleteProduct(int $id) : void {
     global $pdo;
-    $sth = $pdo->prepare('DELETE FROM products WHERE id = ?');
-    $sth->bindParam(1, $id);
+    $sth = $pdo->prepare('DELETE FROM product WHERE id = :id');
+    $sth->bindParam('id', $id);
+   $result =  $sth->execute();
+}
+
+function addProduct(string $name, string $description,  $picture, int $category_id): void 
+{
+    global $pdo;
+    $picture='/'.$picture;
+    $sth = $pdo->prepare('INSERT INTO product (`name`, `description`, `picture`, `category_id`) VALUES ( ?,?,?,?)');
+    $sth->bindParam(1, $name);
+    $sth->bindParam(2, $description);
+    $sth->bindParam(3, $picture);
+    $sth->bindParam(4, $category_id);
     $sth->execute();
+}
+
+function fileupload():bool
+{
+    global $message;
+    //check file extension
+    $allowed=['gif','png','jpg'];
+    $filename=$_FILES['picture']['name']; //original filename
+    $ext=pathinfo($filename,PATHINFO_EXTENSION);
+    if (!in_array($ext,$allowed) || exif_imagetype($_FILES['picture']['tmp_name'])===false) {
+        $message="Sorry alleen gif,png of jpg files toegestaan";
+        return false;
+    }
+
+    //rename file to unique name
+    $target_dir= "img/categories/";
+    $target_file= $_FILES['picture']['name'];
+    do {
+        $target_file=$target_dir.md5($target_file).".$ext";
+    } while (file_exists($target_file));
+
+    //move uploaded file
+    if(move_uploaded_file($_FILES['picture']['tmp_name'], $target_file)) {
+        $message= $target_file;
+        return true;
+    } else {
+        $message.="Sorry, upload niet gelukt";
+        return false;
+    }
 }

@@ -81,16 +81,16 @@ switch ($params[1]) {
                     }
                 
                     include_once "../Templates/signup.php";
-                    break;
+                break;
                     
-                    case 'logout':
+                 case 'logout':
                     $titleSuffix = ' | logout';
                     include_once "../Templates/logout.php";
-                    break;
+                break;
 
                     case 'admin':
                         include_once 'admin.php';
-                        break;
+                    break;
     default:
         $titleSuffix = ' | Home';
         include_once "../Templates/home.php";
