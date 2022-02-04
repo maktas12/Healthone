@@ -11,20 +11,40 @@
 
         <div class="collapse navbar-collapse myNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/home">home</a>
-                </li>
+                <?php
+                    if(isset($_SESSION['role']) && $_SESSION['role'] === 'member'){
+                        echo"
+                        <li class='nav-item'>
+                            <a class='nav-link' href='/member'>home</a>
+                        </li>
+                        "; 
+                    }
+                    else{
+                        echo"
+                        <li class='nav-item'>
+                            <a class='nav-link active' href='/home'>home</a>
+                        </li>
+                        ";
+                    }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/categories">sportapparaat</a>
                 </li>
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
+                        if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){  
                         echo"
                         <li class='nav-item'>
                             <a class='nav-link' href='/admin/products'>admin</a>
                         </li>
                         ";
+                        }
+                        elseif(isset($_SESSION['role']) && $_SESSION['role'] === 'member'){
+                            echo"
+                            <li class='nav-item'>
+                                <a class='nav-link' href=''></a>
+                            </li>
+                            "; 
                         }
                          else{
                             echo"

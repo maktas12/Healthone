@@ -1,10 +1,11 @@
 <?php
 
-function saveLogin($userName, $password) {
+function saveLogin($userName, $password, $role) {
     global $pdo;
-    $sth = $pdo->prepare('INSERT INTO login (first_name, password) VALUES (:userName, :password) ');  
+    $sth = $pdo->prepare('INSERT INTO login (first_name, password, role) VALUES (:userName, :password, :role) ');  
     $sth->bindParam("userName", $userName);   
     $sth->bindParam("password", $password);
+    $sth->bindParam("role", $role);
     $sth->execute();
 
 }

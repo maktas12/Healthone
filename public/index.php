@@ -17,6 +17,7 @@ $params = explode("/", $request);
 $title = "HealthOne";
 $titleSuffix = "";
 session_start();
+var_dump($_SESSION);
 switch ($params[1]) {
     case 'categories':
         $titleSuffix = ' | Categories';        
@@ -77,7 +78,8 @@ switch ($params[1]) {
                     if(isset($_POST['send'])) {
                         $userName = filter_input(INPUT_POST, 'userName');
                         $password = strip_tags(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS));
-                        saveLogin($userName, $password);
+                        $role = 'member';
+                        saveLogin($userName, $password, $role);
                     }
                 
                     include_once "../Templates/signup.php";
@@ -90,6 +92,9 @@ switch ($params[1]) {
 
                     case 'admin':
                         include_once 'admin.php';
+                    break;
+                    case 'member':
+                        include_once 'member.php';
                     break;
     default:
         $titleSuffix = ' | Home';
