@@ -8,6 +8,25 @@
     max-height: 150vh;
 }
 
+table, th, td {
+    border: 2px solid;
+    color: black;
+    margin-left: 600px;
+    
+    font-size: 40px;
+  }
+h5{
+    font-size: 40px;
+    margin-left: 600px;
+    margin-top: 300px;
+    color: black;
+}
+.nextPage{
+    color: blue;
+    background-color: black;
+    margin-left: 600px;
+    font-size: 40px;
+}
 .navbar{
     padding: 0;
 }

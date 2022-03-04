@@ -17,7 +17,6 @@ $params = explode("/", $request);
 $title = "HealthOne";
 $titleSuffix = "";
 session_start();
-var_dump($_SESSION);
 switch ($params[1]) {
     case 'categories':
         $titleSuffix = ' | Categories';        
@@ -33,11 +32,11 @@ switch ($params[1]) {
                 
 
                 if(isset($_POST['submit'])) {
-                    $name = filter_input(INPUT_POST, 'name');
                     $content = strip_tags(filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS));
                     $rating = filter_input(INPUT_POST, 'rating', FILTER_VALIDATE_INT);
-                    saveReview($name, $content, $rating, $productId);
+                    saveReview($content, $rating, $productId);
                 }
+                $name = $_SESSION['first-name'];
                 include_once "../Templates/product.php";
 
             } else {
@@ -67,8 +66,15 @@ switch ($params[1]) {
                         $_SESSION['first-name'] = $user->first_name;
                         $_SESSION['last-name'] = $user->last_name;
                         $_SESSION['role'] = $user->role;
+                        $_SESSION['img'] = $user->img;
                         $_SESSION['login'] = true;
-                        header("Location: /home");
+                        $_SESSION['id'] = $user->id;
+                        if($_SESSION['role'] == "member"){
+                            header("Location: /member/home");
+                        }
+                        else{
+                            header("Location: /home");
+                        }
                     }
                 }
                 include_once "../Templates/login.php";
@@ -76,10 +82,15 @@ switch ($params[1]) {
                 case 'signup':
                     $titleSuffix = ' | signup';
                     if(isset($_POST['send'])) {
+                        if(fileuPloadsignup()){
                         $userName = filter_input(INPUT_POST, 'userName');
                         $password = strip_tags(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS));
+                        $email = filter_input(INPUT_POST, 'email');
+                        $last_name = filter_input(INPUT_POST, 'last_name');
                         $role = 'member';
-                        saveLogin($userName, $password, $role);
+                        $img =  $message1;
+                        saveLogin($userName, $password, $role, $last_name,$email, $img);
+                        }
                     }
                 
                     include_once "../Templates/signup.php";
@@ -93,6 +104,7 @@ switch ($params[1]) {
                     case 'admin':
                         include_once 'admin.php';
                     break;
+                    
                     case 'member':
                         include_once 'member.php';
                     break;

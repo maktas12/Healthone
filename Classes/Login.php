@@ -8,6 +8,7 @@ class Login
     public $email;
     public $role;
     public $password;
+    public $img;
     public function __construct()
     {
         settype($this->id, 'integer');

@@ -15,7 +15,7 @@
                     if(isset($_SESSION['role']) && $_SESSION['role'] === 'member'){
                         echo"
                         <li class='nav-item'>
-                            <a class='nav-link' href='/member'>home</a>
+                            <a class='nav-link' href='/member/home'>home</a>
                         </li>
                         "; 
                     }
@@ -42,7 +42,7 @@
                         elseif(isset($_SESSION['role']) && $_SESSION['role'] === 'member'){
                             echo"
                             <li class='nav-item'>
-                                <a class='nav-link' href=''></a>
+                                <a class='nav-link' href='/member/profileview'>profile</a>
                             </li>
                             "; 
                         }
@@ -72,7 +72,7 @@
                     echo"
                     <li class='nav-item'>
                         <a class='nav-link' href='/login'>inloggen</a>
-                    </li>
+                    </li>   
                     ";
                 }
                 ?>

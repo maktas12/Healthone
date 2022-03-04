@@ -21,7 +21,7 @@
         <form method="post">
             <div class="mb-3">
                 <label for="name" class="col-form-label">
-                    Username:
+                    first_name:
                 </label>
                 <input type="text" name="username" class="form-control" id="name">
             </div>

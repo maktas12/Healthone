@@ -18,18 +18,28 @@
     ?>  
     <div class="signupFrm">
     <div class="wrapper">
-    <form method="post" action="" class="form">
+
+    <form method="post" enctype="multipart/form-data" class="form">
       <h1 class="title">Sign up</h1>
 
       <div class="inputContainer">
         <input type="text" name="userName" class="input" placeholder="a">
-        <label for="" class="label">Username</label>
+        <label for="" class="label">first_name</label>
       </div>
-
+      <div class="inputContainer">
+        <input type="text" name="last_name" class="input" placeholder="a">
+        <label for="" class="label">last_name</label>
+      </div>
       <div class="inputContainer">
         <input type="text" name="password" class="input" placeholder="a">
         <label for="" class="label">Password</label>
       </div>
+      <div class="inputContainer">
+        <input type="text" name="email" class="input" placeholder="a">
+        <label for="" class="label">email</label>
+      </div>
+      zelf foto
+      <input type="file" name="img">
       <input type="submit" name="send" class="submitBtn" value="Sign up">
     </form>
     </div>

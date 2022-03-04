@@ -15,14 +15,17 @@
                 <div class="row">
                     <div class="col-sm imag">
                     <h4>Sportcenter HealthOne</h4>
-                    Fit en gezond zijn is geen vanzelfsprekendheid. We moeten er zelf wat voor doen. Goede, gezonde voeding is hiervoor de basis.
-                    Bewegen hoort hier ook bij. Regelmatig bewegen zorgt voor een goede doorbloeding en draagt bij aan ontspanning van lichaam en geest.
-                    Sporten is goed voor sterkere spieren en voor de conditie. Sporcenter HealthOne heeft verschillende sportapparaten om mee te kunnen werken aan je conditie.
+                   welkom 
+                   <?php echo $name; ?>. jij bent nu ingelogd
                     </div>
                     <div class="col-sm">
                     </div>
                     <div class="col-sm">
-                    <img class="homeImage" src='/img/logo.png' style="height:60vh"/>
+                        <?php
+                        echo"
+                    <img class='homeImage'  src='/". $imgs . "' style='height:60vh'/>
+                    "
+                    ?>
                     </div>
                 </div>
             </div>
